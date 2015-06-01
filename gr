@@ -1,2 +1,6 @@
 #!/bin/bash
-
+case $1 in
+	ao) shift; git remote add origin $(cat $HOME/.config/gr)$@ ;;
+	ro) shift; git remote remove origin ;;
+	*) git remote $@
+esac
