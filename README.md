@@ -1,1 +1,3 @@
-#gr
+#GR
+
+Better `git remote`
