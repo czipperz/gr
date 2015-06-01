@@ -2,5 +2,14 @@
 case $1 in
 	ao) shift; git remote add origin $(cat $HOME/.config/gr)$@ ;;
 	ro) shift; git remote remove origin ;;
+	a) shift; git remote add $@ ;;
+	r) shift; git remote remove $@ ;;
+	sh) shift; git remote set-head $@ ;;
+	sb) shift; git remote set-branches $@ ;;
+	sua) shift; git remote set-url --add $@ ;;
+	sud) shift; git remote set-url --delete $@ ;;
+	su) shift; git remote set-url $@ ;;
+	p) shift; git remote prune $@ ;;
+	u) shift; git remote update $@ ;;
 	*) git remote $@
 esac
