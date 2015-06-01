@@ -1,2 +1,4 @@
 #!/bin/bash
+mkdir -p $HOME/.config
+[ -e $HOME/.config/gr ] || echo 'https://github.com/' > $HOME/.config/gr
 sudo cp gr /bin
