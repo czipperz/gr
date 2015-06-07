@@ -1,6 +1,12 @@
 #!/bin/bash
 case $1 in
-	ao) shift; git remote add origin $(cat $HOME/.config/gr)$@ ;;
+	ao) shift
+		if [ 1 -eq $(echo "$1" | egrep -c "^(http(s)?|git)://*") ]; then
+			git remote add origin $@
+		else
+			git remote add origin $(cat $HOME/.config/gr)$@
+		fi
+		;;
 	ro) shift; git remote remove origin ;;
 	a) shift; git remote add $@ ;;
 	r) shift; git remote remove $@ ;;
