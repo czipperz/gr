@@ -23,7 +23,7 @@ case $1 in
 		fi
 		;;
 	ro) shift; git remote remove origin ;;
-	a) shift; git remote add $@
+	a)  shift
 		qwdf="$1"
 		shift
 		if [ 1 -eq $(echo "$1" | egrep -c "^(http(s)?|git)://*") ]; then
