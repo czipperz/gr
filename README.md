@@ -2,6 +2,16 @@
 
 Better `git remote`
 
+Usage: `gr [OPTION] PARAMETER`
+
+Examples:
+
+	$ cat ~/.config/gr
+	https://czipperz@github.com/
+	c:https://czipperz@github.com/czipperz
+	$ gr ao czipperz/gr  # Same as `git remote add origin https://czipperz@github.com/czipperz/gr`
+	$ gr a origin c:gr  # Same as `git remote add origin https://czipperz@github.com/czipperz/gr`
+
 Options:
 
 * a - add
