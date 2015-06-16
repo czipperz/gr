@@ -8,9 +8,9 @@ Examples:
 
 	$ cat ~/.config/gr
 	https://czipperz@github.com/
-	c:https://czipperz@github.com/czipperz
+	bb:https://czipperz@bitbucket.org/
 	$ gr ao czipperz/gr  # Same as `git remote add origin https://czipperz@github.com/czipperz/gr`
-	$ gr a origin c:gr  # Same as `git remote add origin https://czipperz@github.com/czipperz/gr`
+	$ gr a origin bb:czipperz/gr  # Same as `git remote add origin https://czipperz@bitbucket.org/czipperz/gr`
 
 Options:
 
