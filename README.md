@@ -6,7 +6,7 @@ Usage: `gr [OPTION] PARAMETER`
 
 Examples:
 
-	$ cat ~/.config/gr
+	$ cat ~/.config/git-providers
 	https://czipperz@github.com/
 	bb:https://czipperz@bitbucket.org/
 	$ gr ao czipperz/gr  # Same as `git remote add origin https://czipperz@github.com/czipperz/gr`
