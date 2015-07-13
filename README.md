@@ -9,8 +9,8 @@ Examples:
 	$ cat ~/.config/git-providers
 	https://czipperz@github.com/
 	bb:https://czipperz@bitbucket.org/
-	$ gr ao czipperz/gr  # Same as `git remote add origin https://czipperz@github.com/czipperz/gr`
-	$ gr a origin bb:czipperz/gr  # Same as `git remote add origin https://czipperz@bitbucket.org/czipperz/gr`
+	$ gr ao czipperz/gr              # Same as `git remote add origin https://czipperz@github.com/czipperz/gr`
+	$ gr a origin bb:czipperz/gr     # Same as `git remote add origin https://czipperz@bitbucket.org/czipperz/gr`
 
 Options:
 
