@@ -1,7 +1,7 @@
 #!/bin/bash
 case $1 in
     ao) shift
-	if [ 1 -eq $(echo "$1" | egrep -c "^(http(s)?|git)://*") ]; then
+	if [ 1 -eq $(echo "$1" | egrep -c "^(http(s)?|git|ssh)://*") ]; then
 	    git remote add origin $@
 	elif [ 1 -eq $(echo "$1" | egrep -c "^[^:]+:.+") ]; then
 	    nnnn="$(echo "$1" | perl -pe 's/([^:]+:).+/$1/')"
@@ -26,7 +26,7 @@ case $1 in
     a)  shift
 	qwdf="$1"
 	shift
-	if [ 1 -eq $(echo "$1" | egrep -c "^(http(s)?|git)://*") ]; then
+	if [ 1 -eq $(echo "$1" | egrep -c "^(http(s)?|git|ssh)://*") ]; then
 	    git remote add $qwdf $@
 	elif [ 1 -eq $(echo "$1" | egrep -c "^[^:]+:.+") ]; then
 	    nnnn="$(echo "$1" | perl -pe 's/([^:]+:).+/$1/')"
