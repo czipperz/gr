@@ -52,6 +52,8 @@ case "$1" in
 	fi
 	;;
     r) shift; git remote remove "$@" ;;
+    s) shift; git remote show "$@" ;;
+    so) shift; git remote show origin "$@" ;;
     sh) shift; git remote set-head "$@" ;;
     sb) shift; git remote set-branches "$@" ;;
     su) shift; git remote set-url "$@" ;;
