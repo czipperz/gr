@@ -1,8 +1,8 @@
 #!/bin/bash
-case $1 in
+case "$1" in
     ao) shift
 	if [ 1 -eq $(echo "$1" | egrep -c "^(http(s)?|git|ssh)://*") ]; then
-	    git remote add origin $@
+	    git remote add origin "$@"
 	elif [ 1 -eq $(echo "$1" | egrep -c "^[^:]+:.+") ]; then
 	    nnnn="$(echo "$1" | perl -pe 's/([^:]+:).+/$1/')"
 	    nn="$(cat $HOME/.config/git-providers | wc -l)"
@@ -12,22 +12,24 @@ case $1 in
 		if [ 1 -eq $(echo "$hi" | egrep -c "^$nnnn") ]; then
 		    xD="$(echo "$1" | perl -pe 's/[^:]+:(.+)/$1/')"
 		    shift
-		    git remote add origin $(echo "$hi" | perl -pe 's/[^:]+:(.+)/$1/')$xD
+		    git remote add origin "$(echo "$hi" | perl -pe 's/[^:]+:(.+)/$1/')$xD" "$@"
 		    exit 0
 		fi
 		(( in++ ))
 	    done
 	    echo "Couldn't find provider $(echo "$nnnn" | perl -pe 's/:$//')"
 	else
-	    git remote add origin $(head -n 1 $HOME/.config/git-providers)$@
+	    fst="$1"
+	    shift
+	    git remote add origin "$(head -n 1 $HOME/.config/git-providers)$fst" "$@"
 	fi
 	;;
-    ro) shift; git remote remove origin ;;
+    ro) shift; git remote remove origin "$@" ;;
     a)  shift
 	qwdf="$1"
 	shift
 	if [ 1 -eq $(echo "$1" | egrep -c "^(http(s)?|git|ssh)://*") ]; then
-	    git remote add $qwdf $@
+	    git remote add "$qwdf" "$@"
 	elif [ 1 -eq $(echo "$1" | egrep -c "^[^:]+:.+") ]; then
 	    nnnn="$(echo "$1" | perl -pe 's/([^:]+:).+/$1/')"
 	    nn="$(cat $HOME/.config/git-providers | wc -l)"
@@ -37,23 +39,25 @@ case $1 in
 		if [ 1 -eq $(echo "$hi" | egrep -c "^$nnnn") ]; then
 		    xD="$(echo "$1" | perl -pe 's/[^:]+:(.+)/$1/')"
 		    shift
-		    git remote add $qwdf $(echo "$hi" | perl -pe 's/[^:]+:(.+)/$1/')$xD
+		    git remote add "$qwdf" "$(echo "$hi" | perl -pe 's/[^:]+:(.+)/$1/')$xD" "$@"
 		    exit 0
 		fi
 		(( in++ ))
 	    done
 	    echo "Couldn't find provider $(echo "$nnnn" | perl -pe 's/:$//')"
 	else
-	    git remote add $qwdf $(head -n 1 $HOME/.config/git-providers)$@
+	    fst="$1"
+	    shift
+	    git remote add $qwdf $(head -n 1 $HOME/.config/git-providers)"$fst" "$@"
 	fi
 	;;
-    r) shift; git remote remove $@ ;;
-    sh) shift; git remote set-head $@ ;;
-    sb) shift; git remote set-branches $@ ;;
-    su) shift; git remote set-url $@ ;;
-    sua) shift; git remote set-url --add $@ ;;
-    sud) shift; git remote set-url --delete $@ ;;
-    p) shift; git remote prune $@ ;;
-    u) shift; git remote update $@ ;;
-    *) git remote $@
+    r) shift; git remote remove "$@" ;;
+    sh) shift; git remote set-head "$@" ;;
+    sb) shift; git remote set-branches "$@" ;;
+    su) shift; git remote set-url "$@" ;;
+    sua) shift; git remote set-url --add "$@" ;;
+    sud) shift; git remote set-url --delete "$@" ;;
+    p) shift; git remote prune "$@" ;;
+    u) shift; git remote update "$@" ;;
+    *) git remote "$@"
 esac
