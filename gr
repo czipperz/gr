@@ -1,7 +1,7 @@
 #!/bin/bash
 case "$1" in
     ao) shift
-	if [ 1 -eq $(echo "$1" | egrep -c "^(http(s)?|git|ssh)://*") ]; then
+	if [ 1 -eq $(echo "$1" | egrep -c "^((http(s)?|git|ssh)://*|git@*)") ]; then
 	    git remote add origin "$@"
 	elif [ 1 -eq $(echo "$1" | egrep -c "^[^:]+:.+") ]; then
 	    nnnn="$(echo "$1" | perl -pe 's/([^:]+:).+/$1/')"
